@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Government & Corporate Web Portfolio</title>
+  <style>
+    :root { --bg: #0F172A; --card-bg: #1E293B; --accent: #38BDF8; --text: #F8FAFC; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 2rem 1rem; }
+    header { text-align: center; max-width: 800px; margin: 0 auto 3rem auto; }
+    header h1 { font-size: 2.25rem; color: var(--accent); margin-bottom: 0.5rem; }
+    header p { color: #94A3B8; font-size: 1.1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .card { background: var(--card-bg); border-radius: 12px; padding: 1.75rem; border: 1px solid #334155; text-decoration: none; color: var(--text); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .card h3 { color: var(--accent); font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .card p { color: #CBD5E1; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.5; }
+    .btn { background: var(--accent); color: var(--bg); padding: 0.6rem 1rem; border-radius: 6px; font-weight: bold; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Web Development Portfolio</h1>
+    <p>Modern, responsive, and feature-rich Web Solutions</p>
+  </header>
+  <main class="grid">
+    <a href="./rcea-church/" class="card">
+      <div>
+        <h3>RCEA Church</h3>
+        <p>Interactive service schedule, sermon player, and online Tithe/Giving modal with M-Pesa support.</p>
+      </div>
+      <span class="btn">View Live Demo →</span>
+    </a>
+    <a href="./snoko-grocery/" class="card">
+      <div>
+        <h3>Snoko Online Grocery</h3>
+        <p>Dynamic product grid, search/category filter, dynamic shopping cart, and WhatsApp checkout.</p>
+      </div>
+      <span class="btn">View Live Demo →</span>
+    </a>
+    <a href="./elito-water/" class="card">
+      <div>
+        <h3>Elito Premium Water</h3>
+        <p>Automated subscription refill calculator, purity certificates, and bulk delivery request portal.</p>
+      </div>
+      <span class="btn">View Live Demo →</span>
+    </a>
+    <a href="./the-vine-guesthouse/" class="card">
+      <div>
+        <h3>The Vine Guest House</h3>
+        <p>Luxury rooms, conference booking engine, interactive restaurant & bar menu, and Google Maps integration.</p>
+      </div>
+      <span class="btn">View Live Demo →</span>
+    </a>
+    <a href="./mapro-services/" class="card">
+      <div>
+        <h3>Mapro Cleaning & Security</h3>
+        <p>AI surveillance overview, instant quote estimator, staff badge verification, and service request form.</p>
+      </div>
+      <span class="btn">View Live Demo →</span>
+    </a>
+  </main>
+</body>
+</html>
