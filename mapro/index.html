@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapro Cleaning & Security Services Co. Ltd</title>
+  <style>
+    :root {
+      --primary: #0F172A;
+      --accent: #2563EB;
+      --light: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #334155;
+      --danger: #DC2626;
+      --success: #059669;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--light); color: var(--text); line-height: 1.6; }
+
+    /* Sticky Navigation Header */
+    nav { background: var(--primary); color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+    .nav-brand { font-weight: bold; font-size: 1.15rem; color: #F1F5F9; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-btns { display: flex; gap: 0.75rem; align-items: center; }
+    .btn-nav-emergency { background: var(--danger); color: white; border: none; padding: 0.45rem 0.9rem; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 0.3rem; }
+    .btn-nav-emergency:hover { background: #B91C1C; }
+    .btn-nav-inspect { background: var(--accent); color: white; border: none; padding: 0.45rem 0.9rem; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
+
+    /* Hero Banner */
+    header { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: white; padding: 3rem 1rem; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: #F1F5F9; }
+    header p { color: #94A3B8; font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
+
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+
+    .card { background: var(--card-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid #E2E8F0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .card h3 { color: var(--primary); margin-bottom: 0.75rem; font-size: 1.25rem; }
+    .card ul { list-style-type: none; padding-left: 0; }
+    .card li { margin-bottom: 0.5rem; padding-left: 1.25rem; position: relative; }
+    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+    .section-title { font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem; text-align: center; }
+
+    .widget-box { background: white; padding: 2rem; border-radius: 12px; border: 1px solid #E2E8F0; max-width: 600px; margin: 0 auto 2.5rem auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
+    .form-group select, .form-group input { width: 100%; padding: 0.75rem; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 1rem; }
+    
+    .btn { background: var(--accent); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; }
+    .btn:hover { background: #1D4ED8; }
+
+    .result-price { font-size: 1.25rem; font-weight: bold; color: var(--primary); margin-top: 1rem; text-align: center; }
+
+    /* Modals */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
+    .modal-content { background: white; padding: 2rem; border-radius: 12px; max-width: 480px; width: 100%; text-align: left; position: relative; }
+    .close-modal { position: absolute; top: 12px; right: 16px; font-size: 1.5rem; cursor: pointer; border: none; background: none; color: #64748B; }
+
+    footer { background: var(--primary); color: #94A3B8; text-align: center; padding: 1.5rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-brand">🛡️ Mapro Services</div>
+    <div class="nav-btns">
+      <button class="btn-nav-emergency" onclick="triggerEmergency()">🚨 24/7 Rapid Response</button>
+      <button class="btn-nav-inspect" onclick="openModal('inspectionModal')">Request Site Audit</button>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Mapro Cleaning & Security Services Co. Ltd</h1>
+    <p>Integrated Commercial Security, AI Surveillance & Professional Cleaning Solutions</p>
+  </header>
+
+  <div class="container">
+    
+    <h2 class="section-title">Our Modern Security & Cleaning Solutions</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>AI CCTV & Smart Access Control</h3>
+        <ul>
+          <li>Facial Recognition & License Plate Scanning</li>
+          <li>Biometric & Mobile Access Systems</li>
+          <li>Perimeter Intrusion Detection</li>
+          <li>Cloud-Based Remote Video Archiving</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>IoT Alarms & Central Monitoring</h3>
+        <ul>
+          <li>24/7 Central Station Monitoring</li>
+          <li>Wireless Intrusion & Fire Sensors</li>
+          <li>Instant Mobile Panic Buttons</li>
+          <li>Rapid Response Patrol Dispatch</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Smart Guarding & GPS Verification</h3>
+        <ul>
+          <li>Manned Guarding & Executive Protection</li>
+          <li>Real-Time GPS Guard Patrol Tracking</li>
+          <li>Digital Visitor Logging Kiosks</li>
+          <li>Automated Daily Incident Reporting</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Commercial Cleaning Solutions</h3>
+        <ul>
+          <li>Corporate Office & Industrial Cleaning</li>
+          <li>Post-Construction Site Cleanups</li>
+          <li>Fumigation & Pest Control</li>
+          <li>High-Rise Window & Exterior Washing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Instant Quote Estimator Widget -->
+    <div class="widget-box">
+      <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">Instant Service Quote Estimator</h3>
+      
+      <div class="form-group">
+        <label for="service-type">Select Primary Service:</label>
+        <select id="service-type" onchange="calculateQuote()">
+          <option value="guarding">Physical Manned Guarding (24/7)</option>
+          <option value="cctv">AI CCTV & Access Control Installation</option>
+          <option value="alarm">IoT Alarm & Rapid Response System</option>
+          <option value="cleaning">Commercial Cleaning & Sanitization</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="scale">Facility Scale / Personnel Required:</label>
+        <select id="scale" onchange="calculateQuote()">
+          <option value="1">Small Office / Residential (1 Unit/Guard)</option>
+          <option value="2">Medium Commercial Building (2-3 Units/Guards)</option>
+          <option value="4">Large Industrial Facility (4+ Units/Guards)</option>
+        </select>
+      </div>
+
+      <div class="result-price">
+        Estimated Starting Price: <span id="quote-price" style="color: var(--accent);">KSh 35,000</span> / month
+      </div>
+      <button class="btn" style="margin-top: 1rem; background: #334155;" onclick="openModal('inspectionModal')">Request Official Quotation</button>
+    </div>
+
+    <!-- Staff Verification Widget -->
+    <div class="widget-box">
+      <h3 style="text-align: center; margin-bottom: 1rem; color: var(--primary);">Staff Verification Portal</h3>
+      <p style="text-align: center; font-size: 0.9rem; color: #64748B; margin-bottom: 1rem;">Verify the official status of Mapro security guards or cleaning personnel assigned to your premises.</p>
+      
+      <div class="form-group">
+        <input type="text" id="staff-id" placeholder="Enter Staff Badge or National ID Number">
+      </div>
+      <button class="btn" onclick="verifyStaff()">Verify Personnel</button>
+      <div id="staff-result" style="margin-top: 1rem; text-align: center; font-weight: bold;"></div>
+    </div>
+
+  </div>
+
+  <!-- On-Site Audit / Inspection Request Modal -->
+  <div id="inspectionModal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('inspectionModal')">&times;</button>
+      <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Schedule On-Site Assessment</h3>
+      <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 1.25rem;">Our technical security or cleaning specialists will evaluate your facility and produce a custom proposal.</p>
+      
+      <div class="form-group">
+        <label>Company / Contact Name</label>
+        <input type="text" id="auditName" placeholder="e.g. John Doe / Apex Corp">
+      </div>
+      <div class="form-group">
+        <label>Phone Number or Email</label>
+        <input type="text" id="auditContact" placeholder="0700 000 000 or email@domain.com">
+      </div>
+      <div class="form-group">
+        <label>Assessment Type</label>
+        <select id="auditType">
+          <option>Comprehensive Security & Risk Assessment</option>
+          <option>Commercial Cleaning & Fumigation Assessment</option>
+          <option>Combined Security & Facility Management</option>
+        </select>
+      </div>
+      <button class="btn" onclick="submitAudit()">Submit Inspection Request</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; Mapro Cleaning & Security Services Co. Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    function calculateQuote() {
+      const type = document.getElementById("service-type").value;
+      const scale = parseInt(document.getElementById("scale").value);
+
+      let basePrice = 35000;
+      if (type === "cctv") basePrice = 65000;
+      if (type === "alarm") basePrice = 25000;
+      if (type === "cleaning") basePrice = 20000;
+
+      const total = basePrice * scale;
+      document.getElementById("quote-price").innerText = "KSh " + total.toLocaleString();
+    }
+
+    function verifyStaff() {
+      const id = document.getElementById("staff-id").value.trim();
+      const result = document.getElementById("staff-result");
+
+      if (!id) {
+        result.style.color = "#DC2626";
+        result.innerText = "Please enter an ID or Badge number.";
+        return;
+      }
+
+      result.style.color = "#059669";
+      result.innerText = "✓ Active & Verified Mapro Personnel";
+    }
+
+    function triggerEmergency() {
+      alert("Mapro 24/7 Rapid Response Control Room Dispatch:\nPhone: +254 700 000 000 / Emergency Line Active");
+    }
+
+    function submitAudit() {
+      const name = document.getElementById('auditName').value;
+      if (!name) {
+        alert('Please enter your name or company name.');
+        return;
+      }
+      alert('Thank you! Our Mapro assessment team will contact ' + name + ' within 24 hours to schedule the site audit.');
+      closeModal('inspectionModal');
+    }
+
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+  </script>
+</body>
+</html>
