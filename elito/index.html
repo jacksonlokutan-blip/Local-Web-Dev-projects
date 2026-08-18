@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elito Premium Drinking Water | Pure Hydration & Delivery</title>
+  <style>
+    :root {
+      --primary: #0284C7;
+      --primary-dark: #0C4A6E;
+      --accent: #0EA5E9;
+      --accent-light: #E0F2FE;
+      --bg: #F0F9FF;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --border: #BAE6FD;
+      --success: #10B981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* Navigation */
+    nav { background: var(--primary-dark); color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15); }
+    .brand { font-size: 1.25rem; font-weight: 800; color: #FFFFFF; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-links { display: flex; gap: 1.25rem; align-items: center; }
+    .nav-links a { color: #BAE6FD; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+    .nav-links a:hover { color: white; }
+    .btn-nav { background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
+    .btn-nav:hover { background: #0284C7; }
+
+    /* Hero Banner */
+    header { background: linear-gradient(135deg, #0C4A6E 0%, #0284C7 100%); color: white; padding: 3.5rem 1.5rem; text-align: center; }
+    header h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.5rem; color: #F0F9FF; }
+    header p { color: #E0F2FE; font-size: 1.1rem; max-width: 650px; margin: 0 auto 1.5rem auto; }
+    .hero-badges { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .badge { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.35rem 0.85rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+
+    /* Main Container */
+    .container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; }
+    .section-title { font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 1.25rem; text-align: center; }
+
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1); }
+    .card-icon { font-size: 2.2rem; margin-bottom: 0.75rem; text-align: center; }
+    .card-title { font-size: 1.15rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.4rem; text-align: center; }
+    .card-price { font-size: 1.25rem; font-weight: 800; color: var(--primary); text-align: center; margin-bottom: 0.75rem; }
+    .card-desc { font-size: 0.875rem; color: #475569; margin-bottom: 1rem; flex-grow: 1; }
+    
+    /* Interactive Order Calculator Widget */
+    .widget-box { background: white; border-radius: 16px; border: 1px solid var(--border); padding: 2rem; max-width: 650px; margin: 0 auto 3rem auto; box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.08); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-dark); }
+    .form-group select, .form-group input { width: 100%; padding: 0.75rem; border: 1px solid #93C5FD; border-radius: 8px; font-size: 1rem; background: #F8FAFC; }
+    .calc-row { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .calc-row { grid-template-columns: 1fr; } }
+
+    .result-box { background: var(--accent-light); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; text-align: center; margin-top: 1rem; }
+    .result-price { font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); }
+
+    /* Button Styling */
+    .btn { background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; transition: background 0.2s; }
+    .btn:hover { background: var(--primary-dark); }
+
+    /* Process Timeline */
+    .timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+    .step-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .step-num { width: 32px; height: 32px; background: var(--accent); color: white; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.75rem auto; font-size: 0.9rem; }
+
+    /* Refill Stations Finder */
+    .search-box { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .search-box input { flex: 1; padding: 0.75rem; border: 1px solid #93C5FD; border-radius: 8px; font-size: 0.95rem; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(12, 74, 110, 0.6); justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
+    .modal-content { background: white; padding: 2rem; border-radius: 16px; max-width: 480px; width: 100%; text-align: left; position: relative; }
+    .close-modal { position: absolute; top: 12px; right: 16px; font-size: 1.5rem; cursor: pointer; border: none; background: none; color: #64748B; }
+
+    footer { background: var(--primary-dark); color: #BAE6FD; text-align: center; padding: 2rem 1.5rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="brand">💧 Elito Water</div>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#calculator">Order Calculator</a>
+      <a href="#purification">Purification</a>
+      <a href="#stations">Refill Stations</a>
+    </div>
+    <button class="btn-nav" onclick="openModal('orderModal')">Order Delivery</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>Elito Premium Drinking Water</h1>
+    <p>Ultra-purified, reverse-osmosis treated drinking water delivered directly to homes, offices, and institutions.</p>
+    <div class="hero-badges">
+      <span class="badge">✓ Reverse Osmosis Sterilization</span>
+      <span class="badge">✓ KEBS Certified Quality</span>
+      <span class="badge">✓ Same-Day Bulk Delivery</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Products Showcase -->
+    <h2 class="section-title" id="products">Product Sizes & Packages</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <div class="card-title">500ml Retail Bottle Box</div>
+        <div class="card-price">KSh 600 / Box (24 Bottles)</div>
+        <p class="card-desc">Ideal for events, conferences, sports, and daily portable refreshment.</p>
+        <button class="btn" onclick="selectProduct('500ml', 600)">Order Bottle Box</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🍼</div>
+        <div class="card-title">1.5L Pack Box</div>
+        <div class="card-price">KSh 750 / Box (12 Bottles)</div>
+        <p class="card-desc">Perfect size for family dining, office desks, and active hydration.</p>
+        <button class="btn" onclick="selectProduct('1.5L', 750)">Order 1.5L Pack</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🪣</div>
+        <div class="card-title">5 Liter Dispenser Bottle</div>
+        <div class="card-price">KSh 250 / Unit</div>
+        <p class="card-desc">Convenient carry-handle container for household cooking and weekly use.</p>
+        <button class="btn" onclick="selectProduct('5L', 250)">Order 5L Bottle</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚰</div>
+        <div class="card-title">20L Dispenser Jar Refill</div>
+        <div class="card-price">KSh 350 / Refill Jar</div>
+        <p class="card-desc">Commercial refill bottle for water dispensers in offices, homes, and schools.</p>
+        <button class="btn" onclick="selectProduct('20L', 350)">Order 20L Refill</button>
+      </div>
+    </div>
+
+    <!-- Bulk Delivery Price Calculator -->
+    <div class="widget-box" id="calculator">
+      <h2 class="section-title" style="margin-bottom: 0.5rem;">Instant Order Price Estimator</h2>
+      <p style="text-align: center; color: #64748B; font-size: 0.9rem; margin-bottom: 1.5rem;">Calculate bulk pricing and doorstep delivery costs for your location.</p>
+
+      <div class="calc-row">
+        <div class="form-group">
+          <label for="prod-select">Select Water Product:</label>
+          <select id="prod-select" onchange="calculateTotal()">
+            <option value="350">20L Dispenser Refill Jar (KSh 350)</option>
+            <option value="600">500ml Box x24 Bottles (KSh 600)</option>
+            <option value="750">1.5L Box x12 Bottles (KSh 750)</option>
+            <option value="250">5L Dispenser Bottle (KSh 250)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity Units:</label>
+          <input type="number" id="quantity" value="2" min="1" max="100" onchange="calculateTotal()" onkeyup="calculateTotal()">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="delivery-zone">Delivery Destination:</label>
+        <select id="delivery-zone" onchange="calculateTotal()">
+          <option value="100">Local Town Center (KSh 100 Delivery)</option>
+          <option value="200">Suburbs / Residential Estates (KSh 200 Delivery)</option>
+          <option value="0">Self-Pick Up at Refill Station (Free)</option>
+        </select>
+      </div>
+
+      <div class="result-box">
+        <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">Estimated Total Cost</div>
+        <div class="result-price" id="total-price">KSh 800</div>
+      </div>
+
+      <button class="btn" style="margin-top: 1.25rem; background: var(--success);" onclick="openModal('orderModal')">Proceed to Checkout & Delivery</button>
+    </div>
+
+    <!-- 7-Stage Purification Process -->
+    <h2 class="section-title" id="purification">7-Stage Purification Process</h2>
+    <div class="timeline">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h4 style="font-size: 0.95rem; color: var(--primary-dark);">Multi-Sediment</h4>
+        <p style="font-size: 0.8rem; color: #64748B;">Removes physical particles & micro-dust.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h4 style="font-size: 0.95rem; color: var(--primary-dark);">Activated Carbon</h4>
+        <p style="font-size: 0.8rem; color: #64748B;">Eliminates chlorine, odors, and taste impurities.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h4 style="font-size: 0.95rem; color: var(--primary-dark);">Reverse Osmosis</h4>
+        <p style="font-size: 0.8rem; color: #64748B;">Filters heavy metals and dissolved solids.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h4 style="font-size: 0.95rem; color: var(--primary-dark);">UV Sterilization</h4>
+        <p style="font-size: 0.8rem; color: #64748B;">Neutralizes 99.9% of bacteria and viruses.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <h4 style="font-size: 0.95rem; color: var(--primary-dark);">Ozonation</h4>
+        <p style="font-size: 0.8rem; color: #64748B;">Ensures long-term bottle oxygenation and freshness.</p>
+      </div>
+    </div>
+
+    <!-- Refill Station Directory -->
+    <h2 class="section-title" id="stations">Refill Station Directory</h2>
+    <div class="widget-box" style="max-width: 800px; margin-bottom: 3rem;">
+      <div class="search-box">
+        <input type="text" id="stationSearch" placeholder="Search nearest station or street name..." onkeyup="filterStations()">
+      </div>
+
+      <div id="stationList">
+        <div class="station-item" style="padding: 0.8rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="color: var(--primary-dark);">Elito Central Refill Hub</strong>
+            <p style="font-size: 0.85rem; color: #64748B;">Main Commercial Street, Gate 2 • Open 7:00 AM - 8:00 PM</p>
+          </div>
+          <span style="font-size: 0.8rem; background: var(--accent-light); color: var(--primary-dark); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 700;">Active</span>
+        </div>
+
+        <div class="station-item" style="padding: 0.8rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="color: var(--primary-dark);">Elito Westside Retail Depot</strong>
+            <p style="font-size: 0.85rem; color: #64748B;">Westside Shopping Center, Shop 14 • Open 8:00 AM - 7:00 PM</p>
+          </div>
+          <span style="font-size: 0.8rem; background: var(--accent-light); color: var(--primary-dark); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 700;">Active</span>
+        </div>
+
+        <div class="station-item" style="padding: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="color: var(--primary-dark);">Elito Industrial Refill Point</strong>
+            <p style="font-size: 0.85rem; color: #64748B;">Factory Zone, Block C • Open 6:30 AM - 6:00 PM</p>
+          </div>
+          <span style="font-size: 0.8rem; background: var(--accent-light); color: var(--primary-dark); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 700;">Active</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Checkout / Direct Order Modal -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('orderModal')">&times;</button>
+      <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">Water Delivery Checkout</h3>
+      <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 1.25rem;">Enter your delivery location details to complete your order via M-Pesa / WhatsApp.</p>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="custName" placeholder="e.g. Mary Wanjiku">
+      </div>
+      <div class="form-group">
+        <label>Phone Number / WhatsApp</label>
+        <input type="tel" id="custPhone" placeholder="0700 000 000">
+      </div>
+      <div class="form-group">
+        <label>Delivery Address / Landmark</label>
+        <input type="text" id="custAddress" placeholder="e.g. Greenview Estate, House B4">
+      </div>
+
+      <button class="btn" style="background: var(--success);" onclick="submitDeliveryOrder()">Confirm & Send Order</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; Elito Premium Drinking Water Co. All rights reserved. Licensed & Certified Purified Water Supplier.
+  </footer>
+
+  <script>
+    function calculateTotal() {
+      const unitPrice = parseFloat(document.getElementById("prod-select").value);
+      const qty = parseInt(document.getElementById("quantity").value) || 1;
+      const delivery = parseFloat(document.getElementById("delivery-zone").value);
+
+      const total = (unitPrice * qty) + delivery;
+      document.getElementById("total-price").innerText = "KSh " + total.toLocaleString();
+    }
+
+    function selectProduct(type, price) {
+      document.getElementById("calculator").scrollIntoView({ behavior: 'smooth' });
+      if(type === '500ml') document.getElementById("prod-select").value = "600";
+      if(type === '1.5L') document.getElementById("prod-select").value = "750";
+      if(type === '5L') document.getElementById("prod-select").value = "250";
+      if(type === '20L') document.getElementById("prod-select").value = "350";
+      calculateTotal();
+    }
+
+    function filterStations() {
+      const input = document.getElementById('stationSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.station-item');
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'flex' : 'none';
+      });
+    }
+
+    function submitDeliveryOrder() {
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const addr = document.getElementById('custAddress').value;
+
+      if (!name || !phone || !addr) {
+        alert('Please fill in all contact and delivery address fields.');
+        return;
+      }
+
+      const total = document.getElementById('total-price').innerText;
+      alert('Thank you ' + name + '! Your order (' + total + ') has been logged. Our Elito dispatch team will call ' + phone + ' shortly for immediate doorstep delivery.');
+      closeModal('orderModal');
+    }
+
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+  </script>
+</body>
+</html>
